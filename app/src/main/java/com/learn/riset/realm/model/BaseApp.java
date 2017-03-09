@@ -27,11 +27,14 @@ public class BaseApp extends Application {
         @Override
         public void migrate(DynamicRealm realm, long oldVersion, long newVersion) {
             RealmSchema schema = realm.getSchema();
+            if(oldVersion == 0){
                 schema.create("siswa")
                         .addField("id", int.class)
                         .addField("nama", String.class)
                         .addField("alamat", String.class);
                 oldVersion++;
+            }
+
         }
     }
 }
